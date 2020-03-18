@@ -114,7 +114,7 @@ clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = 
 
     out <- stringr::str_replace(out,
                                 "\\\\linewidth.",
-                                str_glue("{width}\\\\linewidth}\\\\smallskip"))
+                                str_glue("{width}\\\\linewidth}\\"))
 
     # longtable -> table
     if (latex_env == 'table') {

@@ -44,7 +44,7 @@ knit_latex <- function(tab, label = NULL, latex_env = 'longtable', width = 1) {
 #' where to insert a midrule to separate coefficients from GOFs.
 #' @return a string object with LaTeX code
 #' @export
-clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = '^Num Obs.') {
+clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = '^Num Obs.', width = 1) {
 
     # input sanity check
     checkmate::check_character(label, len = 1, null.ok = TRUE)

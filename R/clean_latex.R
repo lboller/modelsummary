@@ -110,11 +110,15 @@ clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = 
     # set width on footnotes
     out <- stringr::str_replace(out,
                                 "\\\\begin.minipage.",
-                                "\\\\centering\\\\\\begin{minipage}")
+                                "\\\\begin{center}\\\\\\begin{minipage}")
 
     out <- stringr::str_replace(out,
                                 "\\\\linewidth.",
                                 paste0(str_glue("{width}\\\\linewidth}"), "\\\\vspace{-1cm}"))
+
+    out <- stringr::str_replace(out,
+                                "\\\\end.minipage.",
+                                "\\\\end{minipage}\\\\\\end{center}")
 
     # longtable -> table
     if (latex_env == 'table') {

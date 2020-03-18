@@ -107,6 +107,15 @@ clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = 
     # tables should be numbered
     out <- stringr::str_replace(out, 'caption\\*', 'caption')
 
+    # set width on footnotes
+    out <- stringr::str_replace(out,
+                                "\\\\begin.minipage.",
+                                "\\\\centering\\\\\\begin{minipage}")
+
+    out <- stringr::str_replace(out,
+                                "\\\\linewidth.",
+                                str_glue("{width}\\\\linewidth}\\\\smallskip"))
+
     # longtable -> table
     if (latex_env == 'table') {
         out <- out %>%

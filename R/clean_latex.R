@@ -16,14 +16,14 @@
 #' @return an object of class `knit_asis`. The first element of this object
 #'   (`x[[1]]`) contains raw LaTeX code.
 #' @export
-knit_latex <- function(tab, label = NULL, latex_env = 'longtable') {
+knit_latex <- function(tab, label = NULL, latex_env = 'longtable', width = 1) {
     # knitr is installed
     knitr_installed <- try(base::find.package('knitr'), silent = TRUE)
     knitr_installed <- !'try-error' %in% class(knitr_installed)
     if (!knitr_installed) {
         stop('The `knitr` package must be installed to use the `knit_latex` function.')
     }
-    out <- clean_latex(tab, label = label, latex_env = latex_env)
+    out <- clean_latex(tab, label = label, latex_env = latex_env, width = 1)
     knitr::asis_output(out)
 }
 

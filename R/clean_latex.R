@@ -23,7 +23,7 @@ knit_latex <- function(tab, label = NULL, latex_env = 'longtable', width = 1) {
     if (!knitr_installed) {
         stop('The `knitr` package must be installed to use the `knit_latex` function.')
     }
-    out <- clean_latex(tab, label = label, latex_env = latex_env, width = 1)
+    out <- clean_latex(tab, label = label, latex_env = latex_env, width = width)
     knitr::asis_output(out)
 }
 

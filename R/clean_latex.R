@@ -6,7 +6,7 @@
 #' which adds a little functionality and "cleans-up" some of the LaTeX output to
 #' avoid common compilation errors. In time, as upstream improves, the goal is
 #' to deprecate this function.
-#' 
+#'
 #' LaTeX compilation requires the following packages: booktabs, caption, longtable
 #'
 #' @param tab table object produced by `modelsummary` or `gt`
@@ -92,7 +92,7 @@ clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = 
 
     # caption should be normal size, not large
     out <- stringr::str_replace(out, '\\\\large ', '')
-    
+
     # captionsetup options
     out <- stringr::str_replace(out, '1pt', '0pt')
     out <- stringr::str_replace(out, 'captionsetup\\[table\\]\\{', 'captionsetup\\[table\\]\\{font=normal,')
@@ -121,7 +121,7 @@ clean_latex <- function(tab, label = NULL, latex_env = 'longtable', gof_regex = 
         out <- out %>%
                stringr::str_replace('.*captionsetup.*', '') %>%
                stringr::str_replace_all('longtable', 'tabular') %>%
-               stringr::str_replace('\\[c\\]', '') 
+               stringr::str_replace('\\[c\\]', '')
         cap <- stringr::str_extract(out, '.caption.*\\n.*.\\n') %>% # caption order is different in table
                stringr::str_replace_all('\\n', ' ') %>% # empty line breaks latex
                stringr::str_trim() %>%
